@@ -1,1 +1,39 @@
+#lobby-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10vw 0px;
+  
+  .players_form {
+    display: flex;
+    flex-direction: column;
+    height: 15vw;
 
+    label {
+      margin: 10px 0px;
+    }
+
+    .buttons-lobby {
+      display: flex;
+      flex-direction: column;
+      height: 70px;
+      border-top: 30px;
+
+      button {
+        border-radius: 8px;
+        padding: 8px;
+        margin-top: 10px;
+      }
+      button:first-child {
+        background-color: map-get($colors, principalButton);
+        color: white;
+      }
+      button:last-child {
+        background-color: map-get($colors, secondaryButton);
+        color: white;
+      }
+
+    }
+  }
+
+}
