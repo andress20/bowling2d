@@ -3,9 +3,10 @@
     justify-content: center;
 
   .board-game {
-    
     display: flex;
     align-items: center;
+    border: 10px;
+    position: absolute;
 
     canvas {
       height: 200px; 
