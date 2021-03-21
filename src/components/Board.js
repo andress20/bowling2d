@@ -26,15 +26,18 @@ function Board() {
   }
 
   return (
-    <div id="board-game">
-      <div></div>
-      <div>hola</div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <canvas ref={canvasRef}/>
-      <button className="playButtton" onClick={ startPlay }>Play</button>
+    <div id="board-container">
+      <div className="board-game">
+        <div className="four">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+        <canvas ref={canvasRef}/>
+        <button className="playButtton" onClick={ startPlay }>Play</button>
     </div>
+  </div>
   )
 }
 

@@ -1,10 +1,18 @@
-#board-game {
+.four {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  border-radius: 50px;
+
 
   div {
-    width: 20px; 
-    height: 20px;
-    background-color: white;
-    position: absolute;
-    border-radius: 50px;
+  width: 20px; 
+  height: 20px;
+  background-color: white;
+  margin: 5px;
+  //position: absolute;
+
+  border-radius: 50px;
+
   }
 }
