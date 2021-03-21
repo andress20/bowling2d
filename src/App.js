@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom'
 import Welcome from './components/Welcome'
 import Lobby from './components/Lobby'
+import Board from './components/Board'
 
 function App() {
 
@@ -16,7 +17,8 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={ Welcome }/>
-          <Route exact path="/Lobby" component={ Lobby }/>
+          <Route exact path="/lobby" component={ Lobby }/>
+          <Route exact path="/board-game" component={ Board }/>
           <Redirect to="/"/>
         </Switch>
       </Router>

@@ -7,6 +7,7 @@ function Lobby() {
   const [p2, setP2] = useState('')
   const [startDisabled, setStartDisabled] = useState(null)
   const [startButton, setStartButton] = useState('Please type names first')
+  const players = []
   
 
   useEffect(() => {
@@ -31,18 +32,28 @@ function Lobby() {
       default:
         break;
     }
-    //if(p1.length<1 || p2.length<1) {
-      //setStartButton('Please type names first')
-    //}else {
-      //setStartButton('Start')
-    //}
   }
 
   const history = useHistory()
   const handleBack = (e) => {
     e.preventDefault()
     history.push('/')
+  }
 
+  const handleCreatePlayer = () => {
+    players.push(player(p1))
+    players.push(player(p2))
+    console.log(players)
+    history.push('/board-game')
+  }
+
+  function player(name) {
+    return {
+      player: '',
+      name: name,
+      pins: [],
+      score: 0,
+    }
   }
 
   return (
@@ -80,7 +91,7 @@ function Lobby() {
           required
         />
         <div className="buttons-lobby">
-          <button type="button" disabled={!startDisabled}>{ startButton }</button>
+          <button type="button" disabled={!startDisabled} onClick={ handleCreatePlayer }>{ startButton }</button>
           <button type="button" onClick={ handleBack }>Back</button>
         </div>
       </form>
