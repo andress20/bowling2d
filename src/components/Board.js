@@ -1,12 +1,29 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import BallMovement from './BallMovement'
 import data from '../utils/data'
 import BallStrike from '../utils/BallStrike'
 
+  var four = [true, true, true, true]
+  var three = [true, true, true]
+  var two = [true, true]
+  var one = [true]
+
 function Board() {
   const canvasRef = useRef(null)
+  const [crash, setCrash] = useState(false)
+
+  useEffect(()=>{
+    four = strike(four)
+    three = strike(three)
+    two = strike(two)
+    one = strike(one)
+  },[crash])
 
   const startPlay = () => {
+    setTimeout(()=>{
+      setCrash(true)
+      cancelAnimationFrame(render)
+    }, 1000)
     const render = () => {
       const canvas = canvasRef.current
       const ctx = canvas.getContext('2d')
@@ -15,7 +32,7 @@ function Board() {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
       BallMovement(ctx, ballObj)
 
-      BallStrike(ballObj,render)
+      //BallStrike(ballObj,render)
 
 
       requestAnimationFrame(render)
@@ -34,10 +51,6 @@ function Board() {
     })
   }
 
-  const four = strike([true, false, true, false])
-  const three = strike([false, true, false])
-  const two = strike([true, false])
-  const one = strike([true]) 
 
   return (
     <div id="board-container">
