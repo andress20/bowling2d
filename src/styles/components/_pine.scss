@@ -3,57 +3,21 @@
   align-items: center;
   position: absolute;
   
-  .four {
+  .order {
     display: flex;
     flex-direction: column;
     border-radius: 50px;
 
-    div {
-      width: 20px; 
-      height: 20px;
-      background-color: black;
-      margin: 5px;
-      border-radius: 50px;
+    div[show=submit] {
+      background-color: map-get($colors, board);
     }
-  }
-  .three {
-    display: flex;
-    flex-direction: column;
-    border-radius: 50px;
 
     div {
       width: 20px; 
       height: 20px;
-      background-color: black;
+      background-color: white;
       margin: 5px;
       border-radius: 50px;
     }
   }
-  .two {
-    display: flex;
-    flex-direction: column;
-    border-radius: 50px;
-
-    div {
-      width: 20px; 
-      height: 20px;
-      background-color: black;
-      margin: 5px;
-      border-radius: 50px;
-    }
-  }
-  .one {
-    display: flex;
-    flex-direction: column;
-    border-radius: 50px;
-
-    div {
-      width: 20px; 
-      height: 20px;
-      background-color: black;
-      margin: 5px;
-      border-radius: 50px;
-    }
-  }
-
 }

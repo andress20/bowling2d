@@ -1,15 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import BallMovement from './BallMovement'
 import data from '../utils/data'
+import BallStrike from '../utils/BallStrike'
 
 function Board() {
-  //const [play, setPlay] = useState(false)
   const canvasRef = useRef(null)
-  //let x = 200
-
-  //useEffect(() => {
-  //},[])
-
 
   const startPlay = () => {
     const render = () => {
@@ -19,33 +14,58 @@ function Board() {
       let { ballObj } = data
       ctx.clearRect(0, 0, canvas.width, canvas.height)
       BallMovement(ctx, ballObj)
-      //x-=2;
+
+      BallStrike(ballObj,render)
+
+
       requestAnimationFrame(render)
     }
     render()
   }
 
+  const strike = (arr) => {
+    return arr.map(() => {
+      var number = parseInt((Math.random() * 10))%2 
+      if( number === 0) {
+        return true
+      }else {
+        return false
+      }
+    })
+  }
+
+  const four = strike([true, false, true, false])
+  const three = strike([false, true, false])
+  const two = strike([true, false])
+  const one = strike([true]) 
+
   return (
     <div id="board-container">
       <div className="board-game">
         <div className="pines">
-          <div className="four">
-            <div></div>
-            <div></div>
-            <div></div>
-            <div></div>
+          <div className="order">
+            {!!four && four.length > 0 && four.map((e,i) => {
+              if(e) return <div key={i} show="paila"></div>
+                return <div key={i} show="submit"></div>
+            })}
           </div>
-          <div className="three">
-            <div></div>
-            <div></div>
-            <div></div>
+          <div className="order">
+            {!!three && three.length > 0 && three.map((e,i) => {
+              if(e) return <div key={i} show="paila"></div>
+                return <div key={i} show="submit"></div>
+            })}
           </div>
-          <div className="two">
-            <div></div>
-            <div></div>
+          <div className="order">
+            {!!two && two.length > 0 && two.map((e,i) => {
+              if(e) return <div key={i} show="paila"></div>
+                return <div key={i} show="submit"></div>
+            })}
           </div>
-          <div className="one">
-            <div></div>
+          <div className="order">
+            {!!one && one.length > 0 && one.map((e,i) => {
+              if(e) return <div key={i} show="paila"></div>
+                return <div key={i} show="submit"></div>
+            })}
           </div>
         </div>
         <canvas ref={canvasRef}/>
