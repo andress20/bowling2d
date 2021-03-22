@@ -4,6 +4,25 @@
     height: 60vh;
     margin: 15vh 10vw;
 
+    .active-player {
+      display: flex;
+      flex-direction: column;
+      color: red;
+      justify-content: space-between;
+      margin: 16px 0px 20px;
+
+      div {
+        display: flex;
+        flex-direction: column;
+        width: 80px;
+        justify-content: center;
+        align-items: center;
+        height: 65px;
+        color: white;
+        background-color: map-get($colors, P1);
+      }
+    }
+
   #score-board {
     display: flex;
     flex-direction: column;
@@ -51,7 +70,7 @@
     .button-play {
       height: 10vh;
       width: 10vw;
-      background-color: map-get($colors, playButton);
+      background-color: map-get($colors, P1);
       color: white;
       
     }

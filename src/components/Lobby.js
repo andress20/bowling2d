@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { useHistory } from 'react-router-dom'
-
+import { PlayerContext } from '../store/PlayerContext'
+ 
 function Lobby() {
 
   const [p1, setP1] = useState('')
   const [p2, setP2] = useState('')
   const [startDisabled, setStartDisabled] = useState(null)
   const [startButton, setStartButton] = useState('Please type names first')
-  const players = []
+
+  const { createPlayer, storage } = useContext(PlayerContext)
   
 
   useEffect(() => {
@@ -41,20 +43,21 @@ function Lobby() {
   }
 
   const handleCreatePlayer = () => {
-    players.push(player(p1))
-    players.push(player(p2))
-    console.log(players)
+    createPlayer(p1, p2)
+    storage()
+    //localStorage.setItem('p1', p1)
+    //localStorage.setItem('p2', p2)
     history.push('/board-game')
   }
 
-  function player(name) {
-    return {
-      player: '',
-      name: name,
-      pins: [],
-      score: 0,
-    }
-  }
+  //function player(name) {
+    //return {
+      //player: '',
+      //name: name,
+      //pins: [],
+      //score: 0,
+    //}
+  //}
 
   return (
     <div id="lobby-form"> 

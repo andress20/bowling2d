@@ -1,9 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState, useContext } from 'react'
 import BallMovement from './BallMovement'
 import data from '../utils/data'
-import BallStrike from '../utils/BallStrike'
 import Score from '../components/Score'
-import _ from 'lodash'
+import { PlayerContext } from '../store/PlayerContext'
 
   var four = [true, true, true, true]
   var three = [true, true, true]
@@ -13,6 +12,14 @@ import _ from 'lodash'
 function Board() {
   const canvasRef = useRef(null)
   const [crash, setCrash] = useState(false)
+  const { p1, p2 } = useContext(PlayerContext)
+
+  console.log(p1, p2)
+
+  if(!p1 && !p2) {
+    p1 = localStorage.getItem('p1')
+    p2 = localStorage.getItem('p2')
+  }
 
   useEffect(()=>{
     four = strike(four)
@@ -33,10 +40,6 @@ function Board() {
       let { ballObj } = data
       ctx.clearRect(0, 0, canvas.width, canvas.height)
       BallMovement(ctx, ballObj)
-
-      //BallStrike(ballObj,render)
-
-
       requestAnimationFrame(render)
     }
     render()
@@ -58,11 +61,14 @@ function Board() {
 
   return (
     <div id="panel">
-      <div>hola</div>
+      <div className="active-player">
+        <div>{ p1.name }</div>
+        <div>{ p2.name }</div>
+      </div>
       <div id="score-board">
         <div className="scoreP1">
           { boxTop.map((e,i) => {
-            return <Score head={i+1} score={e[0]} extra={e[1]} />
+            return <Score key={i} head={i+1} score={e[0]} extra={e[1]} />
           })}
         </div>
         <div id="board-container">
@@ -97,7 +103,7 @@ function Board() {
         </div>
         <div className="scoreP2">
           { boxBottom.map((e,i) => {
-            return <Score head={i+1} score={e[0]} extra={e[1]} />
+            return <Score key={i} head={i+1} score={e[0]} extra={e[1]} />
           })}
         </div>
       </div>
