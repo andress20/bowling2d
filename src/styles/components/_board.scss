@@ -1,25 +1,61 @@
-#test {
+#panel {
   display: flex;
-  flex-direction: column;
-  //align-items: center;
-  #board-container {
+  border: solid blue;
+    height: 60vh;
+    margin: 15vh 10vw;
+
+  #score-board {
+    display: flex;
+    flex-direction: column;
+    width: 70vw;
+    height: 60vh;
+    border: solid 1px red;
+
+    .scoreP1 {
       display: flex;
       justify-content: center;
+      margin: 15px 0px; 
+    }
 
-    .board-game {
+    .scoreP2 {
       display: flex;
-      align-items: center;
-      border: 10px;
-      position: absolute;
+      justify-content: center;
+      margin-top: 220px; 
+    }
 
-      canvas {
-        height: 200px; 
-        width: 600px;
-        background-color: map-get($colors, board);
+    #board-container {
+        display: flex;
+        justify-content: center;
 
+      .board-game {
+        display: flex;
+        align-items: center;
+        border: 10px;
+        position: absolute;
 
+        canvas {
+          height: 200px; 
+          width: 600px;
+          background-color: map-get($colors, board);
+
+        }
       }
     }
   }
-  
+  .container-button-play {
+    display: flex;
+    flex: column;
+    margin-right: 100px;
+    align-items: center;
+
+    .button-play {
+      height: 10vh;
+      width: 10vw;
+      background-color: map-get($colors, playButton);
+      color: white;
+      
+    }
+
+  }
+
 }

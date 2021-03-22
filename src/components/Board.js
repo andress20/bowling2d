@@ -3,6 +3,7 @@ import BallMovement from './BallMovement'
 import data from '../utils/data'
 import BallStrike from '../utils/BallStrike'
 import Score from '../components/Score'
+import _ from 'lodash'
 
   var four = [true, true, true, true]
   var three = [true, true, true]
@@ -52,45 +53,58 @@ function Board() {
     })
   }
 
+  let boxTop = [[8,7], [5,3], [0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]]
+  let boxBottom = [[8,7], [5,3], [0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]]
 
   return (
-    <div id="test">
-      <div>
-        <Score number="1" sub="8" squad="7" />
-        <Score number="1" sub="8" squad="7" />
+    <div id="panel">
+      <div>hola</div>
+      <div id="score-board">
+        <div className="scoreP1">
+          { boxTop.map((e,i) => {
+            return <Score head={i+1} score={e[0]} extra={e[1]} />
+          })}
+        </div>
+        <div id="board-container">
+          <div className="board-game">
+            <div className="pines">
+              <div className="order">
+                {!!four && four.length > 0 && four.map((e,i) => {
+                  if(e) return <div key={i} show="paila"></div>
+                    return <div key={i} show="submit"></div>
+                })}
+              </div>
+              <div className="order">
+                {!!three && three.length > 0 && three.map((e,i) => {
+                  if(e) return <div key={i} show="paila"></div>
+                    return <div key={i} show="submit"></div>
+                })}
+              </div>
+              <div className="order">
+                {!!two && two.length > 0 && two.map((e,i) => {
+                  if(e) return <div key={i} show="paila"></div>
+                    return <div key={i} show="submit"></div>
+                })}
+              </div>
+              <div className="order">
+                {!!one && one.length > 0 && one.map((e,i) => {
+                  if(e) return <div key={i} show="paila"></div>
+                    return <div key={i} show="submit"></div>
+                })}
+              </div>
+            </div>
+            <canvas ref={canvasRef}/>
+        </div>
+        <div className="scoreP2">
+          { boxBottom.map((e,i) => {
+            return <Score head={i+1} score={e[0]} extra={e[1]} />
+          })}
+        </div>
       </div>
-      <div id="board-container">
-        <div className="board-game">
-          <div className="pines">
-            <div className="order">
-              {!!four && four.length > 0 && four.map((e,i) => {
-                if(e) return <div key={i} show="paila"></div>
-                  return <div key={i} show="submit"></div>
-              })}
-            </div>
-            <div className="order">
-              {!!three && three.length > 0 && three.map((e,i) => {
-                if(e) return <div key={i} show="paila"></div>
-                  return <div key={i} show="submit"></div>
-              })}
-            </div>
-            <div className="order">
-              {!!two && two.length > 0 && two.map((e,i) => {
-                if(e) return <div key={i} show="paila"></div>
-                  return <div key={i} show="submit"></div>
-              })}
-            </div>
-            <div className="order">
-              {!!one && one.length > 0 && one.map((e,i) => {
-                if(e) return <div key={i} show="paila"></div>
-                  return <div key={i} show="submit"></div>
-              })}
-            </div>
-          </div>
-          <canvas ref={canvasRef}/>
-          <button className="playButtton" onClick={ startPlay }>Play</button>
       </div>
-    </div>
+      <div className="container-button-play">
+        <button className="button-play"onClick={ startPlay }>Play</button>
+      </div>
     </div>
   )
 }

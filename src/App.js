@@ -9,6 +9,7 @@ import {
 import Welcome from './components/Welcome'
 import Lobby from './components/Lobby'
 import Board from './components/Board'
+import Score from './components/Score'
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
           <Route exact path="/" component={ Welcome }/>
           <Route exact path="/lobby" component={ Lobby }/>
           <Route exact path="/board-game" component={ Board }/>
+          <Route exact path="/score" component={ Score }/>
           <Redirect to="/"/>
         </Switch>
       </Router>
