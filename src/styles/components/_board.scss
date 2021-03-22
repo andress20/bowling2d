@@ -1,19 +1,25 @@
-#board-container {
-    display: flex;
-    justify-content: center;
+#test {
+  display: flex;
+  flex-direction: column;
+  //align-items: center;
+  #board-container {
+      display: flex;
+      justify-content: center;
 
-  .board-game {
-    display: flex;
-    align-items: center;
-    border: 10px;
-    position: absolute;
+    .board-game {
+      display: flex;
+      align-items: center;
+      border: 10px;
+      position: absolute;
 
-    canvas {
-      height: 200px; 
-      width: 600px;
-      background-color: map-get($colors, board);
+      canvas {
+        height: 200px; 
+        width: 600px;
+        background-color: map-get($colors, board);
 
 
+      }
     }
   }
+  
 }

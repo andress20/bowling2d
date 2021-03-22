@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import BallMovement from './BallMovement'
 import data from '../utils/data'
 import BallStrike from '../utils/BallStrike'
+import Score from '../components/Score'
 
   var four = [true, true, true, true]
   var three = [true, true, true]
@@ -53,38 +54,44 @@ function Board() {
 
 
   return (
-    <div id="board-container">
-      <div className="board-game">
-        <div className="pines">
-          <div className="order">
-            {!!four && four.length > 0 && four.map((e,i) => {
-              if(e) return <div key={i} show="paila"></div>
-                return <div key={i} show="submit"></div>
-            })}
+    <div id="test">
+      <div>
+        <Score number="1" sub="8" squad="7" />
+        <Score number="1" sub="8" squad="7" />
+      </div>
+      <div id="board-container">
+        <div className="board-game">
+          <div className="pines">
+            <div className="order">
+              {!!four && four.length > 0 && four.map((e,i) => {
+                if(e) return <div key={i} show="paila"></div>
+                  return <div key={i} show="submit"></div>
+              })}
+            </div>
+            <div className="order">
+              {!!three && three.length > 0 && three.map((e,i) => {
+                if(e) return <div key={i} show="paila"></div>
+                  return <div key={i} show="submit"></div>
+              })}
+            </div>
+            <div className="order">
+              {!!two && two.length > 0 && two.map((e,i) => {
+                if(e) return <div key={i} show="paila"></div>
+                  return <div key={i} show="submit"></div>
+              })}
+            </div>
+            <div className="order">
+              {!!one && one.length > 0 && one.map((e,i) => {
+                if(e) return <div key={i} show="paila"></div>
+                  return <div key={i} show="submit"></div>
+              })}
+            </div>
           </div>
-          <div className="order">
-            {!!three && three.length > 0 && three.map((e,i) => {
-              if(e) return <div key={i} show="paila"></div>
-                return <div key={i} show="submit"></div>
-            })}
-          </div>
-          <div className="order">
-            {!!two && two.length > 0 && two.map((e,i) => {
-              if(e) return <div key={i} show="paila"></div>
-                return <div key={i} show="submit"></div>
-            })}
-          </div>
-          <div className="order">
-            {!!one && one.length > 0 && one.map((e,i) => {
-              if(e) return <div key={i} show="paila"></div>
-                return <div key={i} show="submit"></div>
-            })}
-          </div>
-        </div>
-        <canvas ref={canvasRef}/>
-        <button className="playButtton" onClick={ startPlay }>Play</button>
+          <canvas ref={canvasRef}/>
+          <button className="playButtton" onClick={ startPlay }>Play</button>
+      </div>
     </div>
-  </div>
+    </div>
   )
 }
 
