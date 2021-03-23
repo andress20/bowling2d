@@ -10,8 +10,8 @@ import { PlayerContext } from '../store/PlayerContext'
   var one = [false]
   let boxTop = [[0,0], [0,0], [0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]]
   let boxBottom = [[0,0], [0,0], [0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]]
-var turn = 0
-var strike = 0
+  var turn = 0
+  var strike = 0
 
 function Board() {
   const canvasRef = useRef(null)
@@ -34,10 +34,18 @@ function Board() {
     one = strike(one)
 
     scoreStrike = four.concat(three).concat(two).concat(one).filter(e => e)
-    boxTop[0][turn] = scoreStrike.length
-    turn++
+    saveScore(scoreStrike, 'p1', turn)
     console.log('turno:', turn)
     setCrash(!crash)
+  }
+
+  const saveScore = (scoreStrike, player, turn) => {
+    if(player == 'p1') {
+      boxTop[turn][0] = scoreStrike.length
+    } else {
+      boxBottom[turn][0] = scoreStrike.length
+    }
+    turn++
   }
 
   const strike = (arr) => {

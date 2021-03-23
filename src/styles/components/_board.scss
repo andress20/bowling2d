@@ -1,13 +1,13 @@
 #panel {
   display: flex;
-  border: solid blue;
+  //border: solid blue;
     height: 60vh;
     margin: 15vh 10vw;
 
     .active-player {
       display: flex;
       flex-direction: column;
-      color: red;
+      //color: red;
       justify-content: space-between;
       margin: 16px 0px 20px;
 
@@ -28,7 +28,7 @@
     flex-direction: column;
     width: 70vw;
     height: 60vh;
-    border: solid 1px red;
+    //border: solid 1px red;
 
     .scoreP1 {
       display: flex;
