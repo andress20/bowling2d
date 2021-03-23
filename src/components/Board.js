@@ -62,6 +62,8 @@ function Board() {
 
   return (
     <div id="panel">
+      <div id="ball">
+      </div>
       <div className="active-player">
         <div>{ p1.name }</div>
         <div>{ p2.name }</div>

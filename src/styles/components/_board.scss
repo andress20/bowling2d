@@ -4,6 +4,22 @@
     height: 60vh;
     margin: 15vh 10vw;
 
+      #ball {
+        width: 30px; 
+        height: 30px;
+        background-color: red;
+        position: absolute;
+        border-radius: 50%;
+        animation-name: roll;
+        animation-duration: 2s;
+        margin: 70px 0px 0px 100px;
+      }
+
+      @keyframes roll {
+        0% { left: 100px; top: 20px;}
+        100% { left: 0px; top: 20px;}
+      }
+
     .active-player {
       display: flex;
       flex-direction: column;
