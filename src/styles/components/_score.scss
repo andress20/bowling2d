@@ -1,0 +1,32 @@
+#square {
+  display: flex;
+  flex-direction: column;
+  .head {
+    display: flex;
+    justify-content: center;
+    width: 60px;
+    height: 20px;
+    border: solid 1px;
+  }
+  .body {
+    display: flex;
+    width: 60px;
+    height: 40px;
+    border: solid 1px;
+
+    .score {
+      position: absolute;
+      margin: 5px 10px;
+    }
+
+    .extra {
+      display:flex;
+      margin-left: 50%;
+      justify-content: center;
+      border-left: solid 1px;
+      border-bottom: solid 1px;
+      width: 50%;
+      height: 49%;
+    }
+  }
+}
