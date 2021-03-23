@@ -8,7 +8,7 @@
     flex-direction: column;
     border-radius: 50px;
 
-    div[show=submit] {
+    div[show=down] {
       background-color: map-get($colors, board);
     }
 

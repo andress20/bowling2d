@@ -4,45 +4,40 @@ import data from '../utils/data'
 import Score from '../components/Score'
 import { PlayerContext } from '../store/PlayerContext'
 
-  var four = [true, true, true, true]
-  var three = [true, true, true]
-  var two = [true, true]
-  var one = [true]
+  var four = [false, false, false, false]
+  var three = [false, false, false]
+  var two = [false, false]
+  var one = [false]
+  let boxTop = [[0,0], [0,0], [0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]]
+  let boxBottom = [[0,0], [0,0], [0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]]
+var turn = 0
+var strike = 0
 
 function Board() {
   const canvasRef = useRef(null)
   const [crash, setCrash] = useState(false)
   const { p1, p2 } = useContext(PlayerContext)
-
-  console.log(p1, p2)
+  var scoreStrike 
 
   if(!p1 && !p2) {
     p1 = localStorage.getItem('p1')
     p2 = localStorage.getItem('p2')
   }
 
-  useEffect(()=>{
+  //useEffect(()=>{
+  //},[crash])
+
+  const startPlay = () => {
     four = strike(four)
     three = strike(three)
     two = strike(two)
     one = strike(one)
-  },[crash])
 
-  const startPlay = () => {
-    setTimeout(()=>{
-      setCrash(true)
-      cancelAnimationFrame(render)
-    }, 1000)
-    const render = () => {
-      const canvas = canvasRef.current
-      const ctx = canvas.getContext('2d')
-
-      let { ballObj } = data
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
-      BallMovement(ctx, ballObj)
-      requestAnimationFrame(render)
-    }
-    render()
+    scoreStrike = four.concat(three).concat(two).concat(one).filter(e => e)
+    boxTop[0][turn] = scoreStrike.length
+    turn++
+    console.log('turno:', turn)
+    setCrash(!crash)
   }
 
   const strike = (arr) => {
@@ -56,8 +51,6 @@ function Board() {
     })
   }
 
-  let boxTop = [[8,7], [5,3], [0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]]
-  let boxBottom = [[8,7], [5,3], [0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]]
 
   return (
     <div id="panel">
@@ -76,26 +69,26 @@ function Board() {
             <div className="pines">
               <div className="order">
                 {!!four && four.length > 0 && four.map((e,i) => {
-                  if(e) return <div key={i} show="paila"></div>
-                    return <div key={i} show="submit"></div>
+                  if(e) return <div key={i} show="down"></div>
+                    return <div key={i} show="up"></div>
                 })}
               </div>
               <div className="order">
                 {!!three && three.length > 0 && three.map((e,i) => {
-                  if(e) return <div key={i} show="paila"></div>
-                    return <div key={i} show="submit"></div>
+                  if(e) return <div key={i} show="down"></div>
+                    return <div key={i} show="up"></div>
                 })}
               </div>
               <div className="order">
                 {!!two && two.length > 0 && two.map((e,i) => {
-                  if(e) return <div key={i} show="paila"></div>
-                    return <div key={i} show="submit"></div>
+                  if(e) return <div key={i} show="down"></div>
+                    return <div key={i} show="up"></div>
                 })}
               </div>
               <div className="order">
                 {!!one && one.length > 0 && one.map((e,i) => {
-                  if(e) return <div key={i} show="paila"></div>
-                    return <div key={i} show="submit"></div>
+                  if(e) return <div key={i} show="down"></div>
+                    return <div key={i} show="up"></div>
                 })}
               </div>
             </div>
