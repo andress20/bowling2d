@@ -62,8 +62,6 @@ function Board() {
 
   return (
     <div id="panel">
-      <div id="ball">
-      </div>
       <div className="active-player">
         <div>{ p1.name }</div>
         <div>{ p2.name }</div>
@@ -74,8 +72,9 @@ function Board() {
             return <Score key={i} head={i+1} score={e[0]} extra={e[1]} />
           })}
         </div>
-        <div id="board-container">
           <div className="board-game">
+            <div id="ball">
+            </div>
             <div className="pines">
               <div className="order">
                 {!!four && four.length > 0 && four.map((e,i) => {
@@ -102,13 +101,11 @@ function Board() {
                 })}
               </div>
             </div>
-            <canvas ref={canvasRef}/>
-        </div>
+          </div>
         <div className="scoreP2">
           { boxBottom.map((e,i) => {
             return <Score key={i} head={i+1} score={e[0]} extra={e[1]} />
           })}
-        </div>
       </div>
       </div>
       <div className="container-button-play">

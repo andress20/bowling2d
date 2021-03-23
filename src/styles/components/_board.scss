@@ -4,21 +4,6 @@
     height: 60vh;
     margin: 15vh 10vw;
 
-      #ball {
-        width: 30px; 
-        height: 30px;
-        background-color: red;
-        position: absolute;
-        border-radius: 50%;
-        animation-name: roll;
-        animation-duration: 2s;
-        margin: 70px 0px 0px 100px;
-      }
-
-      @keyframes roll {
-        0% { left: 100px; top: 20px;}
-        100% { left: 0px; top: 20px;}
-      }
 
     .active-player {
       display: flex;
@@ -42,6 +27,7 @@
   #score-board {
     display: flex;
     flex-direction: column;
+    border: solid purple;
     width: 70vw;
     height: 60vh;
     //border: solid 1px red;
@@ -55,26 +41,33 @@
     .scoreP2 {
       display: flex;
       justify-content: center;
-      margin-top: 220px; 
+      margin-top: 20px; 
     }
 
-    #board-container {
+    .board-game {
         display: flex;
+        flex-direction: column;
         justify-content: center;
+        border: solid red;
+        width: 650px; 
+        height: 200px;
+        background-color: map-get($colors, board);
 
-      .board-game {
-        display: flex;
-        align-items: center;
-        border: 10px;
-        position: absolute;
-
-        canvas {
-          height: 200px; 
-          width: 600px;
-          background-color: map-get($colors, board);
-
+        #ball {
+          width: 30px; 
+          height: 30px;
+          background-color: red;
+          position: absolute;
+          border-radius: 50%;
+          animation-name: roll;
+          animation-duration: 1s;
+          margin-left: 500px;
         }
-      }
+
+        @keyframes roll {
+          0% { left: 185px; top: 285px;}
+          100% { left: -200px; top: 285px;}
+        }
     }
   }
   .container-button-play {
