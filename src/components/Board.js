@@ -1,6 +1,4 @@
-import React, { useEffect, useRef, useState, useContext } from 'react'
-import BallMovement from './BallMovement'
-import data from '../utils/data'
+import React, { useRef, useState, useContext } from 'react'
 import Score from '../components/Score'
 import { PlayerContext } from '../store/PlayerContext'
 
@@ -11,7 +9,6 @@ import { PlayerContext } from '../store/PlayerContext'
   let boxTop = [[0,0], [0,0], [0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]]
   let boxBottom = [[0,0], [0,0], [0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0],[0,0]]
   var turn = 0
-  var strike = 0
 
 function Board() {
   const canvasRef = useRef(null)
@@ -24,10 +21,9 @@ function Board() {
     p2 = localStorage.getItem('p2')
   }
 
-  //useEffect(()=>{
-  //},[crash])
-
   const startPlay = () => {
+
+    animation()
     four = strike(four)
     three = strike(three)
     two = strike(two)
@@ -35,8 +31,13 @@ function Board() {
 
     scoreStrike = four.concat(three).concat(two).concat(one).filter(e => e)
     saveScore(scoreStrike, 'p1', turn)
-    console.log('turno:', turn)
-    setCrash(!crash)
+    setTimeout(() => {
+      setCrash(!crash)
+    }, 1000)
+  }
+
+  const animation = () => {
+    document.getElementById('ball').className = 'ball1'
   }
 
   const saveScore = (scoreStrike, player, turn) => {
